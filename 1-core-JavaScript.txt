@@ -1,0 +1,10 @@
+- Character Set: ECMAScript 5 requires implementations to support Unicode 3 or later.
+
+- Case Sensitivity: JavaScript is a case-sensitive language. This means that language keywords, variables, function names, and other identifiers must always be typed with a consistent capitali- zation of letters. The while keyword, for example, must be typed “while,” not “While” or “WHILE.” Similarly, online, Online, OnLine, and ONLINE are four distinct variable names.
+
+- Identifiers and Reserved Words: An identifier is simply a name. A JavaScript iden- tifier must begin with a letter, an underscore (_), or a dollar sign ($). Digits are not allowed as the first character so that JavaScript can easily distinguish identifiers from numbers. For portability and ease of editing, it is common to use only ASCII letters and digits in identifiers. Note, however, that JavaScript allows identifiers to contain letters and digits from the entire Unicode character set. Technically, the ECMAScript standard also allows Unicode characters from the obscure categories Mn, Mc, and Pc to appear in identifiers after the first character.
+
+var sí = true; //valid :)
+var π = 3.14; //valid :)
+var $ = "hello"; //valid :)
+var üşğçö="started with turkis letters.";  //totally valid :) Remember: JavaScript allows identifiers to contain letters and digits from the entire Unicode character set
