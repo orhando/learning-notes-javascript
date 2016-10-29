@@ -116,6 +116,52 @@ true;  //line 2
 	Math.log(512)/Math.LN2  // Base 2 logarithm of 512
 	Math.exp(3)             // Math.E cubed
       
+	Arithmetic in JavaScript does not raise errors in cases of overflow, underflow, or divi- sion by zero. When the result of a numeric operation is larger than the largest repre- sentable number (overflow), the result is a special infinity value, which JavaScript prints as Infinity. Similarly, when a negative value becomes larger than the largest repre- sentable negative number, the result is negative infinity, printed as -Infinity.
+	
+	1/0 			// => Infinity
+       -1/0			// => -Infinity
+        0/0			// => NaN   Not a Number
+	Math.sqrt(-number)	// => NaN 
+	Infinity/Infinity	// => NaN
+	
+The not-a-number value has one unusual feature in JavaScript: it does not compare equal to any other value, including itself. This means that you can’t write x == NaN to determine whether the value of a variable x is NaN. Instead, you should write x != x.
+
+	NaN == NaN		// => false :) yes truely, false :)
+	isNaN()			// if the parameter, argument is NaN, or a non-numeric value such as a string or an object.
+
+Look at below 3 lines for NaN:
+	var x = 0/0;		// => x=NaN
+	var y = x != x;		// => y=true beacause it is a way to understand if a variable is NaN. or use isNAN()
+	var z = isNaN(x)	// => z = true
+	
+	isFinite(value); 	//The isFinite() function determines whether a number is a finite, legal number.
+	isFinite(123);		// => true
+	isFinite("123");	// => true	
+	isFinite("123a");	// => false
+	isFinite("0x123a");	// => true :)  because  hexadecimal represantation
+	isFinite("0x123aH");	// => false :)  it seams like hexadecimal but no "H"! :)
+	isFinite("123    ");	// => true :)  white spaces, even cariage returns ommited if there is noanyletter at the end
+	
+	
+	
+
+- Binary Floating-Point and Rounding Errors:
+
+	Because of rounding error, the difference between the approximations of .3 and .2 is not exactly the same 
+	as the difference between the approximations of .2 and .1. It is important to understand that this problem 
+	is not specific to JavaScript: it affects any programming language that uses binary floating-point numbers. 
+	Also, note that the values x and y in the code above are very close to each other and to the correct value. 
+	The computed values are adequate for almost any purpose: the problem arises when we attempt to compare 
+	values for equality.
+
+	var x= 0.3 - 0.2;		// => 0.09999999999999998
+	var y= 0.2 - 0.1;		// => 0.1
+
+	console.log(x == y);		// => false
+	console.log(x == 0.1);		// => false
+	console.log( x== 0.1);		// => false
+
+	
 
 
   
