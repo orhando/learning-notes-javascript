@@ -13,12 +13,12 @@ var üşğçö="started with turkis letters.";  //totally valid :) Remember: Jav
 
 - Reserved Words: JavaScript reserves a number of identifiers as the keywords of the language itself. You cannot use these words as identifiers in your programs
 
-      break		      delete		    function		    return		  typeof
-      case		      do			      if 				      switch		  var
-      catch		      else		      in				      this		    void
-      continue	    false		      instanceof		  throw		    while
-      debugger	    finally		    new				      true		    with
-      default		    for 		      null			      try		
+      break		      delete	    function	    return		 typeof
+      case		      do		    if 		    switch		 var
+      catch		      else		    in		    this		 void
+      continue	      false		    instanceof	    throw		 while
+      debugger	      finally	    new		    true		 with
+      default		for 		    null		    try		
       
       ECMAScript 5 reserves the following words:      
       class         const         enum            export      extends     import    super
@@ -62,7 +62,66 @@ These statement termination rules lead to some surprising cases. This code looks
 var y = x + f    //line 1
 (a+b).toString() //line 2:  this statement evalute like:  var y = x + f(a+b).toString()  :::  this is not the interpretation intended by the author of the code.
 
-There are two exceptions to the general rule that JavaScript interprets line breaks as semicolons when it cannot parse the second line as a continuation of the statement on the first line. The first exception involves the return, break, and continue statements
+There are two exceptions to the general rule that JavaScript interprets line breaks as semicolons when it cannot parse the second line as a continuation of the statement on the first line. The first exception involves the return, break, and continue statements.
+
+return //line 1
+true;  //line 2
+//above lines: JavaScript assumes you meant: "return; true;"   However, you probably meant: "return true;"
+
+
+- Types, Variables, Values:
+      Number
+      String
+      Boolean
+      Symbol (new in edition 6)
+      Object
+            Function
+            Array
+            Date
+            RegExp
+      null
+      undefined
+
+- Numbers: Unlike many languages, JavaScript does not make a distinction between integer values and floating-point values. All numbers in JavaScript are represented as floating-point values. JavaScript represents numbers using the 64-bit floating-point format defined by the IEEE 754 standard,1 which means it can represent numbers as large as ±1.7976931348623157 × 10308 and as small as ±5 × 10−324.
+
+- Integer Literals: 
+  base-10 : //1234
+  base-16 : // 0xff
+  base-8  : // 0377   // 3*64 + 7*8 + 7 = 255 (base 10) :::  you should never write an integer literal with a leading zero; you cannot know in this case whether an implementation will interpret it as an octal or decimal value. In the strict mode of ECMAScript 5 (§5.7.3), octal literals are explicitly forbidden.
+
+- Floating-Point Literals: [digits][.digits][(E|e)[(+|-)]digits]
+      3.14
+      2345.789
+      .333333333333333333
+      6.02e5 // 6.02 x 100000 =>602000
+      1.4733E-3 // 1.4738223 x (1/1000) =>   0,0014733
+      
+      
+- Arithmetic in JavaScript:      
+      Math.pow(2,53)          // => 9007199254740992: 2 to the power 53
+	Math.round(.6)          // => 1.0: round to the nearest integer
+	Math.ceil(.6)           // => 1.0: round up to an integer
+	Math.floor(.6)          // => 0.0: round down to an integer      
+	Math.abs(-5)            // => 5: absolute value
+	Math.max(x,y,z)         // Return the largest argument
+	Math.min(x,y,z)         // Return the smallest argument
+	Math.random()           // Pseudo-random number x where 0 <= x < 1.0
+	Math.PI                 // π: circumference of a circle / diameter
+	Math.E                  // e: The base of the natural logarithm
+	Math.sqrt(3)            // the square root of 3
+	Math.pow(3, 1/3)        // The cube root of 3
+	Math.sin(0)             // Trigonometry: also Math.cos, Math.atan, etc.
+	Math.log(10)            // Natural logarithm of 10
+	Math.log(100)/Math.LN10 // Base 10 logarithm of 100
+	Math.log(512)/Math.LN2  // Base 2 logarithm of 512
+	Math.exp(3)             // Math.E cubed
+      
+
+
+  
+
+
+
 
 
 
