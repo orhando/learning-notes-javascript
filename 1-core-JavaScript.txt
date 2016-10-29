@@ -188,7 +188,22 @@ Checking is number of not:
 	later.toISOString();					// => "2016-12-31T13:30:45.000Z"
 	
 	
+- String Literals:
+	A string is an immutable ordered sequence of 16-bit values, each of which typically represents a Unicode 
+	character—strings are JavaScript’s type for representing text. 
 	
+	In ECMAScript 3, string literals must be written on a single line. In ECMAScript 5, however, you can break 
+	a string literal across multiple lines by ending each line but the last with a backslash (\).
+	
+	"two\nlines" // A string representing 2 lines written on one line
+	"one\ // A one-line string written on 3 lines. ECMAScript 5 only.
+	long\
+	line"	
+	
+	var msg = "Hello, " + "world"; // Produces the string "Hello, world" 
+	var greeting = "Welcome to my blog," + " " + name;
+	
+
 
   
 
