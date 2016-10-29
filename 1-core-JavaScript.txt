@@ -1,3 +1,5 @@
+==================================== PART 1: CORE JAVASCRIPT ==================================== 
+
 - Character Set: ECMAScript 5 requires implementations to support Unicode 3 or later.
 
 - Case Sensitivity: JavaScript is a case-sensitive language. This means that language keywords, variables, function names, and other identifiers must always be typed with a consistent capitali- zation of letters. The while keyword, for example, must be typed “while,” not “While” or “WHILE.” Similarly, online, Online, OnLine, and ONLINE are four distinct variable names.
@@ -8,3 +10,62 @@ var sí = true; //valid :)
 var π = 3.14; //valid :)
 var $ = "hello"; //valid :)
 var üşğçö="started with turkis letters.";  //totally valid :) Remember: JavaScript allows identifiers to contain letters and digits from the entire Unicode character set
+
+- Reserved Words: JavaScript reserves a number of identifiers as the keywords of the language itself. You cannot use these words as identifiers in your programs
+
+      break		      delete		    function		    return		  typeof
+      case		      do			      if 				      switch		  var
+      catch		      else		      in				      this		    void
+      continue	    false		      instanceof		  throw		    while
+      debugger	    finally		    new				      true		    with
+      default		    for 		      null			      try		
+      
+      ECMAScript 5 reserves the following words:      
+      class         const         enum            export      extends     import    super
+      
+      In addition, the following words, which are legal in ordinary JavaScript code, are re- served in strict mode:
+      
+      implements    let           private         public      yield     interface     package     protected     static
+
+      Strict mode also imposes restrictions on the use of the following identifiers. They are not fully reserved, 
+      but they are not allowed as variable, function, or parameter names:
+    
+      arguments   eval
+                      
+      
+      JavaScript predefines a number of global variables and functions, and you should avoid using their names
+      for your own variables and functions:
+
+      arguments           encodeURI             Infinity              Number              RegExp
+      Array               encodeURIComponent    isFinite              Object              String
+      Boolean             Error                 isNaN                 parseFloat          SyntaxError
+      Date                eval                  JSON                  parseInt            TypeError
+      decodeURI           EvalError             Math                  RangeError          undefined
+      decodeURIComponent  Function              NaN                   ReferenceError      URIError
+      
+      
+- Optional Semicolons: Like many programming languages, JavaScript uses the semicolon (;) to separate state- ment from each other. In JavaScript, you can usually omit the semicolon between two statements if those statements are written on separate lines. Many JavaScript programmers (and the code in this book) use semico- lons to explicitly mark the ends of statements, even where they are not required.
+
+var a = 3  //valid
+var b = 4  //valid
+
+a = 3; b = 4; //valid
+      
+var a           //line 1
+a               //line 2
+=               //line 3
+3               //line 4
+console.log(a)  //line 5 :  this 5 lines equal to   var a; a=3; console.log(a);
+
+
+These statement termination rules lead to some surprising cases. This code looks like two separate statements separated with a newline:
+var y = x + f    //line 1
+(a+b).toString() //line 2:  this statement evalute like:  var y = x + f(a+b).toString()  :::  this is not the interpretation intended by the author of the code.
+
+There are two exceptions to the general rule that JavaScript interprets line breaks as semicolons when it cannot parse the second line as a continuation of the statement on the first line. The first exception involves the return, break, and continue statements
+
+
+
+      
+      
+    
