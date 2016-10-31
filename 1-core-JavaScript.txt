@@ -247,7 +247,8 @@ Checking is number of not:
 	
   
 Pattern Matching:
-	JavaScript adopts Perl’s syntax for regular expressions. Both strings and RegExp objects have methods for performing pattern matching and search-and-replace operations using regular expressions.
+	JavaScript adopts Perl’s syntax for regular expressions. Both strings and RegExp objects have methods 
+	for performing pattern matching and search-and-replace operations using regular expressions.
 
 	/^HTML/				// Match the letters H T M L at the start of a string
 	/[1-9][0-9]*/			// Match a non-zero digit, followed by any # of digits
@@ -261,7 +262,99 @@ Pattern Matching:
 	text.replace(pattern, "#"); 	// => "testing: #, #, #"
 	text.split(/\D+/); // => ["","1","2","3"]: split on non-digits
 	
+Boolean Values:
+	The following values convert to, and therefore work like, false:
+	undefined 
+	null
+	0
+	-0
+	NaN
+	"" // the empty string
+	
+	all other values like, true:
+	"1"  // true
+	"0"  // true  in php => false
 
+Wrapper Objects:
+	Strings, numbers, and boolean values behave like objects when you try to read the value of a property 
+	(or method) from them. But if you attempt to set the value of a property, that attempt is silently 
+	ignored: the change is made on a temporary object and does not persist. You just need to know that 
+	string, number, and boolean values differ from objects in that their properties are read-only and 
+	that you can’t define new properties on them.
+	
+	var s = "test";			// start with a string value
+	s.tcolor = "red";		// set a property on it
+	var t = s.tcolor;		// try to read that property and assing to a new variable.
+					// at 3th line, s.tcolor is undefined. 
+					
+Immutable Primitive Values and Mutable Object
+References:
+	There is a fundamental difference in JavaScript between primitive values (undefined, null, booleans, 
+	numbers, and strings) and objects (including arrays and functions). Primitives are immutable: 
+	*** there is no way to change (or “mutate”) a primitive value. ***
+	*** Primitives are compared by value ***
+	*** Objects are not compared by value: two objects are not equal even if they have the same properties and values.***
+	***  And two arrays are not equal even if they have the same elements in the same order ***
+	
+	Objects are sometimes called reference types to distinguish them from JavaScript’s primitive types. 
+	Using this terminology, object values are references, and we say that objects are compared by reference: 
+	two object values are the same if and only if they refer to the same underlying object. (Page 63) it does not 
+	create a new copy of the object. If you want to make a new copy of an object or array, you must explicitly 
+	copy the properties of the object or the elements of the array. 
+	
+	var a = ['a','b','c']; 			// An array we want to copy
+	var b = []; 				// A distinct array we'll copy into 
+	for(var i = 0; i < a.length; i++) { 	// For each index of a[]
+		b[i] = a[i];			// Copy an element of a into b 
+	}
+	
+	Similarly, if we want to compare two distinct objects or arrays, we must compare their properties or elements.
+
+	function equalArrays(a,b) {				// Different-size arrays not equal
+		if (a.length != b.length) return false;		// Loop through all elements
+		for(var i = 0; i < a.length; i++)		// If any differ, arrays not equal
+			if (a[i] !== b[i]) return false;	// Otherwise they are equal
+		return true;
+	}
+	
+	
+Explicit Conversions:
+	The simplest way to perform an explicit type conversion is to use the Boolean(), Number(), String(), 
+	or Object() functions. We’ve already seen these functions as con- structors for wrapper objects. 
+	When invoked without the new operator, how- ever, they work as conversion functions and perform 
+	the conversions summarized in Table 3-2:
+	
+	Number("3") 		// => 3
+	String(false) 		// => "false" Or use false.toString()
+	Boolean([]) 		// => true
+	Object(3)		// => new Number(3)
+
+	Note that any value other than null or undefined has a toString() method and the result of this 
+	method is usually the same as that returned by the String() function.
+	
+	The toString() method defined by the Number class accepts an optional argument that specifies 
+	a radix, or base, for the conversion.
+	
+	var n = 17;				
+	binary_string = n.toString(2); 		// Evaluates to "10001"
+	octal_string = "0" + n.toString(8); 	// Evaluates to "021"
+	hex_string = "0x" + n.toString(16);	// Evaluates to "0x11"
+	
+	When working with financial or scientific data, you may want to convert numbers to strings in ways 
+	that give you control over the number of decimal places or the number of significant digits 
+	in the output, or you may want to control whether exponential notation is used. The Number class 
+	defines three methods for these kinds of number- to-string conversions. toFixed() converts a number 
+	to a string with a specified number of digits after the decimal point.	
+	
+	var n = 123456.789; 
+	n.toFixed(0); 		// "123457"
+	n.toFixed(2); 		// "123456.79"
+	n.toFixed(5); 		// "123456.78900"
+	n.toExponential(1); 	// "1.2e+5"
+	n.toExponential(3); 	// "1.235e+5"
+	n.toPrecision(4); 	// "1.235e+5"
+	n.toPrecision(7); 	// "123456.8"
+	n.toPrecision(10);	// "123456.7890"
 	
 	
 
