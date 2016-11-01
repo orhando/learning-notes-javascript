@@ -404,8 +404,81 @@ Variable Declaration:
 	declaration has an initializer, it acts as if it were simply an assignment statement.
 
 
+Variable Scope: 
+	Within the body of a function, a local variable takes precedence over a global variable with the same name. 
+	If you declare a local variable or function parameter with the same name as a global variable, you effectively 
+	hide the global variable:
+	
+	var scope = "global"; 			// Declare a global variable
+	function checkscope() {
+		var scope = "local"; 		// Declare a local variable with the same name
+		return scope;			// Return the local value, not the global one
+	} 
+	checkscope();				// => "local"
+	
+Nested Function Definitions and Scope:	
+	Function definitions can be nested. Each function has its own local scope, so it is pos- sible to have 
+	several nested layers of local scope. For example:	
+	
+	var scope = "global scope"; 				// A global variable
+	function checkscope() {
+		var scope = "local scope"; 			// A local variable
+		function nested() {
+			var scope = "nested scope"; 		// A nested scope of local variables
+			return scope;				// Return the value in scope here
+		}
+		return [scope,nested()]; 
+	}
+	console.log([scope, checkscope()]);			// => Array[2]
+								//	0:"global scope"
+								//	1:Array[2]
+								//		0:"local scope"
+								//		1:"nested scope"
+		
+
+Function Scope and Hoisting:
+	In some C-like programming languages, each block of code within curly braces has its own scope, and 
+	variables are not visible outside of the block in which they are declared. This is called block scope, 
+	and JavaScript does not have it. Instead, JavaScript uses function scope: variables are visible within 
+	the function in which they are defined and within any functions that are nested within that function.
+	
+	JavaScript’s function scope means that all variables declared within a function are visi- ble throughout 
+	the body of the function. 
+
+	var scope = "global"; 
+	function f() {
+		console.log(scope); 	// Prints "undefined", not "global"
+		var scope = "local"; 	// Variable initialized here, but defined everywhere 
+		console.log(scope); 	// Prints "local"
+	}
+
+Shortghand Function Definitions:
+
+	USECASE 1:
+	var z=5; ( z == 5 ? function(){ console.log("A"); } : function(){ console.log("B"); }  )();
+	
+	USECASE 2:
+	var fx = function(){ console.log("A"); }
+	var fy = function(){ console.log("B"); }
+	var z=5; ( z == 5 ? fx : fy })();
+	
+	USECASE 3:
+	(function(){ 
+		console.log("outer func"); 
+		(function(){ 
+			console.log("nested 1"); 
+			(function(){ 
+				console.log("nested 2"); 
+				(function(){ 
+					console.log("nested 3"); 
+				})();
+			})();
+		})();
+	})();
+	
 
 	
+
 
 	
 
