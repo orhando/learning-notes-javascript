@@ -46,21 +46,22 @@ var üşğçö="started with turkis letters.";  //totally valid :) Remember: Jav
       
 - Optional Semicolons: Like many programming languages, JavaScript uses the semicolon (;) to separate state- ment from each other. In JavaScript, you can usually omit the semicolon between two statements if those statements are written on separate lines. Many JavaScript programmers (and the code in this book) use semico- lons to explicitly mark the ends of statements, even where they are not required.
 
-var a = 3  //valid
-var b = 4  //valid
+	var a = 3  //valid
+	var b = 4  //valid
 
-a = 3; b = 4; //valid
-      
-var a           //line 1
-a               //line 2
-=               //line 3
-3               //line 4
-console.log(a)  //line 5 :  this 5 lines equal to   var a; a=3; console.log(a);
+	a = 3; b = 4; //valid
+
+	var a           //line 1
+	a               //line 2
+	=               //line 3
+	3               //line 4
+	console.log(a)  //line 5 :  this 5 lines equal to   var a; a=3; console.log(a);
 
 
 These statement termination rules lead to some surprising cases. This code looks like two separate statements separated with a newline:
-var y = x + f    //line 1
-(a+b).toString() //line 2:  this statement evalute like:  var y = x + f(a+b).toString()  :::  this is not the interpretation intended by the author of the code.
+	var y = x + f    	//line 1
+	(a+b).toString() 	//line 2:  this statement evalute like:  var y = x + f(a+b).toString()  :::  
+				// this is not the interpretation intended by the author of the code.
 
 There are two exceptions to the general rule that JavaScript interprets line breaks as semicolons when it cannot parse the second line as a continuation of the statement on the first line. The first exception involves the return, break, and continue statements.
 
@@ -98,7 +99,7 @@ true;  //line 2
       
       
 - Arithmetic in JavaScript:      
-      Math.pow(2,53)          // => 9007199254740992: 2 to the power 53
+        Math.pow(2,53)          // => 9007199254740992: 2 to the power 53
 	Math.round(.6)          // => 1.0: round to the nearest integer
 	Math.ceil(.6)           // => 1.0: round up to an integer
 	Math.floor(.6)          // => 0.0: round down to an integer      
@@ -128,6 +129,7 @@ The not-a-number value has one unusual feature in JavaScript: it does not compar
 
 	NaN == NaN		// => false :) yes truely, false :)
 	isNaN()			// if the parameter, argument is NaN, or a non-numeric value such as a string or an object.
+	var x=NaN; x!=x; 	// => true :) because NaN == NaN => false
 
 Look at below 3 lines for NaN:
 	var x = 0/0;		// => x=NaN
@@ -135,7 +137,7 @@ Look at below 3 lines for NaN:
 	var z = isNaN(x)	// => z = true
 
 Checking is number of not:
-	isFinite(value); 	//The isFinite() function determines whether a number is a finite, legal number.
+	isFinite(value); 	// The isFinite() function determines whether a number is a finite, legal number.
 	
 	isFinite(123);		// => true
 	isFinite("123");	// => true	
