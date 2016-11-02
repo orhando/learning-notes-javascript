@@ -479,8 +479,24 @@ Shortghand Function Definitions:
 	})();
 	
 
-	
+	USECASE 4:
+	var my = { funcs: [
+			function(p){
+				console.log("0000:" + p) ;
+				return "p0";
+			},
+			function(p){
+				console.log("11111:"+p);
+				return "p1";
+			}
+		]};
 
+	console.log(typeof (my.funcs[1] || function(){return false})("ok") ); 	// => 11111:ok  
+										// => string
+	console.log(typeof (my.funcs[5] || function(){return false})("ok") );	// => boolean
+	console.log(typeof my.funcs[0]("ok"));					// => 0000:ok
+										// => string
+	
 
 	
 
